@@ -1,5 +1,5 @@
 # UCD Informed Search
-For my first project in ECS 170, I used Java to implement the A* search algorithm which, given a three-dimensional grid, finds the shortest path from a startpoint to an endpoint. I began by implementing Dijkstra's algorithm, a benchmark that yields the optimal path. Then, I devised (and proved the admissibility of) admissible heuristics that optimized the cost and runtime of Dijkstra's algorithm, resulting in the A* search algorithm.
+For this assignment, I used Java to implement the A* search algorithm which, given a three-dimensional grid, finds the shortest path from a startpoint to an endpoint. I began by implementing Dijkstra's algorithm, a benchmark that yields the optimal path. Then, I devised (and proved the admissibility of) admissible heuristics that optimized the cost and runtime of Dijkstra's algorithm, resulting in the A* search algorithm.
 
 I first worked with the **TerrainMap** class, a class encapsulating a two-dimensional world layered on top of a rectangular grid. Each point in the world has a height, represented by an integer value between 0 and 255. You can move to any of the eight squares adjacent to your own location (e.g. the four cardinal directions and the diagonals). The cost to traverse between tiles is dependent on the differences in height between the tiles.
 
