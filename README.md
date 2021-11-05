@@ -81,13 +81,13 @@ AStarExp
 | Seed 4 | 560.6570436319696  |   68869   |   2386    |
 | Seed 5 | 479.5879215923168  |   69895   |   2523    |
 
+While they both compute the same optimal path, the A* search algorithm does by searching a significantly smaller space in significantly less time. This confirms the validity and effectiveness of the admissible heuristic I devised.
+
 ## Part 4: "Climbing" Mount Saint Helens
-A much larger grid necessitates a more cleverly implemented algorithm. I modified both my A* algorithm and admissible heuristic as as to find the optimal path in this new environment in the least possible time. I needed only to consider the chess movement (eight neighbors) and "New height divided by old height" cost function.  
+A much larger grid necessitates a more cleverly implemented algorithm. I modified both my A* search algorithm and my admissible heuristic so as to find the optimal path in this new environment in the least possible time. For this part, I was asked only to consider the division cost function.  
 Use the following command to try the larger grid: `java Main YourAIModule -load MTAFT.XYZ`.
 
-### Submission
-- **report1.pdf**: A clear and concise description of my modified A* algorithm and admissible heuristic with proof of admissibility; the cost of my shortest path, number of tiles visited, and time to find it for seeds 1, 2, 3, 4, and 5 for both **AStarExp** and **AStarDiv**
-- The implementation of my modified A* algorithm and admissible heuristic
-    - **AStarExp_914862981.java**
-    - **AStarDiv_914862981.java**
-    - **MtStHelensDiv_914862981.java**
+`MtStHelensDiv_914862981` is a modified `AStarDiv_914862981`, with two optimizations:  
+1. I implemented the *weighted* A* search algorithm by multiplying the heuristic by a constant factor, a weight *w* > 1, magnifying the heuristic's effect.
+2. I modified my implementation of Dijkstra's algorithm such that there are no duplicate entries added to the priority queue (since, when iterating through the neighbors of a node that has been popped off of the priority queue, it is possible to encounter a node that has been reached previously, but at a different cost).  
+Together, these two optimizations lowered the average runtime of the algorithm.
