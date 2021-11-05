@@ -1,9 +1,19 @@
 # UCD Informed Search
 For this assignment, I used Java to implement the A* search algorithm which, given a three-dimensional grid, finds the shortest path from a startpoint to an endpoint. I began by implementing Dijkstra's algorithm, a benchmark that yields the optimal path. Then, I devised (and proved the admissibility of) admissible heuristics that optimized the cost and runtime of Dijkstra's algorithm, resulting in the A* search algorithm.
 
-I first worked with the **TerrainMap** class, a class encapsulating a two-dimensional world layered on top of a rectangular grid. Each point in the world has a height, represented by an integer value between 0 and 255. You can move to any of the eight squares adjacent to your own location (e.g. the four cardinal directions and the diagonals). The cost to traverse between tiles is dependent on the differences in height between the tiles.
+`html` directory contains various HTML files, all of which provide a brief overview of instructions and starter code for this assignment.
+`report1.pdf` is a written report of this assignment.
 
-The **TerrainMap** class also keeps track of which tiles an algorithm visits as it looks for an optimal path. The goal is to optimize the number of tiles visited by the algorithm (many of the better search algorithms that visit fewer squares also run in considerably less time).
+---
+
+I first familiarized myself with `TerrainMap`, a class encapsulating a two-dimensional world layered on top of a rectangular grid. Each point in the world has a height, represented by an integer value between 0 and 255. You can move to any of the eight tiles adjacent to your own location (e.g. the four cardinal directions and the diagonals). The cost to traverse between tiles is dependent on the differences in height between the tiles.
+
+`TerrainMap` also keeps track of which tiles an algorithm visits as it looks for an optimal path. The goal is to optimize the number of tiles visited by the algorithm (many of the better search algorithms that visit fewer tiles also run in considerably less time).
+
+The assignment is to create an implementation of the `AIModule` interface that computes a path from the startpoint to the endpoint while minimizing the total search space. Once this function is written, it can be ran with the existing starter code by compiling the module and specifying it as a command-line parameter to the main program. For example, if you have written an AI module called PerfectAI, you can run `java Main PerfectAI`. This will run your AI module, print its performance measures and number of visited tiles to `stdout`, and create a display window showing the terrain, the tiles visited by your AI module (search space), and the path computed.
+
+## Part 0: Dijkstra's Algorithm
+Dijkstra's algorithm is an algorithm for finding the shortest paths between nodes in a graph (which may represent, for example, road networks). It uses a data structure for storing and querying partial solutions sorted by distance from the startpoint; in my implementation I used a priority queue, ordered by the cost of the path, and a hash map containing visited tiles and their attributes.
 
 ## Part 1: Creating Heuristics
 Cost functions:  
