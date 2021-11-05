@@ -48,26 +48,24 @@ public double getCost(final Point p1, final Point p2) {
 }
 ```
 
-A heuristic function *h(n)* estimates the cost of the cheapest path from the state at node *n* to a goal state. Heuristic functions are the most common form in which additional knowledge of the problem is imparted to the search algorithm. A heuristic is admissible if it never overestimates the cost to reach the goal.
+A heuristic function *h(n)* estimates the cost of the cheapest path from the state at node *n* to a goal state, and is the most common form in which additional knowledge of the problem is imparted to the search algorithm. A heuristic is admissible if it never overestimates the cost to reach the goal. Since *g(n)* is the actual cost to reach *n* along the current path, and *f(n) = g(n) + h(n)*, we have as an immediate consequence that *f(n)* never overestimates the true cost of a solution along the current path through *n*.
 
-For each cost function above, and for the chess movement (eight neighbors), I created an admissible heuristic, documented the exact form of the heuristic, and proved/showed it is admissible (see the report for these details). These admissible heuristics will be referred to as `AStarDiv` and `AStarEXp`, respectively.
+For each cost function above, I created an admissible heuristic, documented its exact form, and proved/showed that it is, indeed, admissible (see the report for these details). These admissible heuristics will be referred to as `AStarDiv` and `AStarExp`, respectively.
 
-## Part 2: Implementing Heuristics and A* Algorithm
-I implemented my own version of A*. The **DirectAI** and **StupidAI** classes demonstrate how to search the state space.
+## Part 2: Implementing Heuristics and A* Search Algorithm
+My implementation of the A* search algorithm and admissible heuristics is in the files `AStarDiv_914862981.java` and `AStarExp_914862981.java`. While their implementation of Dijkstra's algorithm does not differ, the `getHeuristic` function is an implementation of the admissible heuristic that I devised for that specific cost function.
 
-> The heuristic is implemented in the `getHeuristic` function.
+The `createPath` function is essentially Dijkstra's algorithm; however, it calls the `getHeuristic` function in its override of the priority queue comparator. Thus, when ordering computed paths by their costs, the priority queue accounts for the heuristic (i.e. *f(n) = g(n) + h(n)*).
 
 ## Part 3: Trying Algorithm on Small Problem
-Tried out my heuristic functions with the appropriate cost function on 500x500 maps with random seeds 1, 2, 3, 4, and 5.
-
-> Use the following command to do this: `java Main YourAIModule -seed x` with x being one of the seeds listed above.
+Tried out my heuristic functions with the appropriate cost function on 500x500 maps with random seeds 1, 2, 3, 4, and 5.  
+Use the following command to do this: `java Main YourAIModule -seed x` with x being one of the seeds listed above.
 
 For each execution I recorded the cost of the shortest path and the number of tiles visited as per the output of the program.
 
 ## Part 4: "Climbing" Mount Saint Helens
-A much larger grid necessitates a more cleverly implemented algorithm. I modified both my A* algorithm and admissible heuristic as as to find the optimal path in this new environment in the least possible time. I needed only to consider the chess movement (eight neighbors) and "New height divided by old height" cost function.
-
-> Use the following command to try the larger grid: `java Main YourAIModule -load MTAFT.XYZ`.
+A much larger grid necessitates a more cleverly implemented algorithm. I modified both my A* algorithm and admissible heuristic as as to find the optimal path in this new environment in the least possible time. I needed only to consider the chess movement (eight neighbors) and "New height divided by old height" cost function.  
+Use the following command to try the larger grid: `java Main YourAIModule -load MTAFT.XYZ`.
 
 ### Submission
 - **report1.pdf**: A clear and concise description of my modified A* algorithm and admissible heuristic with proof of admissibility; the cost of my shortest path, number of tiles visited, and time to find it for seeds 1, 2, 3, 4, and 5 for both **AStarExp** and **AStarDiv**
