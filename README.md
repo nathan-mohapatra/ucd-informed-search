@@ -36,10 +36,21 @@ function DIJKSTRAS(problem) returns a solution or failure
 
 ## Part 1: Creating Heuristics
 Cost functions:  
-- Exponential of the height difference
-- New height divided by old height
+```
+// exponential of the height difference
+public double getCost(final Point p1, final Point p2) {
+    return Math.exp(getTile(p2) - getTile(p1));
+}
 
-For each cost function above for the chess movement (eight neighbors), I created an admissible heuristic, documented the exact form of the heuristic, and proved/showed it is admissible.
+// new height divided by old height
+public double getCost(final Point p1, final Point p2) {
+    return 1.0 * getTile(p2) / (getTile(p1) + 1);
+}
+```
+
+A heuristic function *h(n)* estimates the cost of the cheapest path from the state at node *n* to a goal state. Heuristic functions are the most common form in which additional knowledge of the problem is imparted to the search algorithm. A heuristic is admissible if it never overestimates the cost to reach the goal.
+
+For each cost function above, and for the chess movement (eight neighbors), I created an admissible heuristic, documented the exact form of the heuristic, and proved/showed it is admissible (see the report for these details). These admissible heuristics will be referred to as `AStarDiv` and `AStarEXp`, respectively.
 
 ## Part 2: Implementing Heuristics and A* Algorithm
 I implemented my own version of A*. The **DirectAI** and **StupidAI** classes demonstrate how to search the state space.
