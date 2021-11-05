@@ -61,7 +61,8 @@ The `createPath` function is essentially Dijkstra's algorithm; however, it calls
 I tried out my heuristic functions with the appropriate cost function on 500x500 maps with random seeds 1, 2, 3, 4, and 5.  
 Use the following command to do this: `java Main YourAIModule -seed x` with x being one of the seeds listed above.
 
-For each execution I recorded the cost of the shortest path and the number of tiles visited as per the output of the program. To demonstrate the improvements made, here is a comparison between Dijkstra's and A* for the exponential cost function:  
+For each execution I recorded the cost of the shortest path and the number of tiles visited as per the output of the program. To demonstrate the improvements made, here is a comparison between Dijkstra's and A* for the exponential cost function:
+
 Dijkstra's (Exp)
 |        |      PathCost      | Uncovered | TimeTaken |
 |:------:|:------------------:|:---------:|:---------:|
@@ -70,6 +71,7 @@ Dijkstra's (Exp)
 | Seed 3 | 510.97825243663607 |  228697   |   11165   |
 | Seed 4 | 560.6570436319696  |  216438   |   11344   |
 | Seed 5 | 479.5879215923168  |  220673   |   10594   |
+
 AStarExp
 |        |      PathCost      | Uncovered | TimeTaken |
 |:------:|:------------------:|:---------:|:---------:|
