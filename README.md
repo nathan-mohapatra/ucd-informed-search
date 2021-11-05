@@ -87,7 +87,7 @@ While they both compute the same optimal path, the A* search algorithm does by s
 A much larger grid necessitates a more cleverly implemented algorithm. I modified both my A* search algorithm and my admissible heuristic so as to find the optimal path in this new environment in the least possible time. For this part, I was asked only to consider the division cost function.  
 Use the following command to try the larger grid: `java Main YourAIModule -load MTAFT.XYZ`.
 
-`MtStHelensDiv_914862981` is a modified `AStarDiv_914862981`, with two optimizations:  
+`MtStHelensDiv_914862981.java` is a modified `AStarDiv_914862981.java`, with two optimizations:  
 1. I implemented the *weighted* A* search algorithm by multiplying the heuristic by a constant factor, a weight *w* > 1, magnifying the heuristic's effect.
 2. I modified my implementation of Dijkstra's algorithm such that there are no duplicate entries added to the priority queue (since, when iterating through the neighbors of a node that has been popped off of the priority queue, it is possible to encounter a node that has been reached previously, but at a different cost).
 
