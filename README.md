@@ -89,5 +89,6 @@ Use the following command to try the larger grid: `java Main YourAIModule -load 
 
 `MtStHelensDiv_914862981` is a modified `AStarDiv_914862981`, with two optimizations:  
 1. I implemented the *weighted* A* search algorithm by multiplying the heuristic by a constant factor, a weight *w* > 1, magnifying the heuristic's effect.
-2. I modified my implementation of Dijkstra's algorithm such that there are no duplicate entries added to the priority queue (since, when iterating through the neighbors of a node that has been popped off of the priority queue, it is possible to encounter a node that has been reached previously, but at a different cost).  
+2. I modified my implementation of Dijkstra's algorithm such that there are no duplicate entries added to the priority queue (since, when iterating through the neighbors of a node that has been popped off of the priority queue, it is possible to encounter a node that has been reached previously, but at a different cost).
+
 Together, these two optimizations lowered the average runtime of the algorithm.
