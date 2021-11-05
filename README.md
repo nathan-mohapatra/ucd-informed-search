@@ -1,7 +1,7 @@
 # UCD Informed Search
 For this assignment, I used Java to implement the A* search algorithm which, given a three-dimensional grid, finds the shortest path from a startpoint to an endpoint. I began by implementing Dijkstra's algorithm, a benchmark that yields the optimal path. Then, I devised (and proved the admissibility of) admissible heuristics that optimized the cost and runtime of Dijkstra's algorithm, resulting in the A* search algorithm.
 
-`html` directory contains various HTML files, all of which provide a brief overview of instructions and starter code for this assignment.
+`html` directory contains various HTML files, all of which provide a brief overview of instructions and starter code for this assignment.  
 `report1.pdf` is a written report of this assignment.
 
 ---
@@ -55,13 +55,29 @@ For each cost function above, I created an admissible heuristic, documented its 
 ## Part 2: Implementing Heuristics and A* Search Algorithm
 My implementation of the A* search algorithm and admissible heuristics is in the files `AStarDiv_914862981.java` and `AStarExp_914862981.java`. While their implementation of Dijkstra's algorithm does not differ, the `getHeuristic` function is an implementation of the admissible heuristic that I devised for that specific cost function.
 
-The `createPath` function is essentially Dijkstra's algorithm; however, it calls the `getHeuristic` function in its override of the priority queue comparator. Thus, when ordering computed paths by their costs, the priority queue accounts for the heuristic (i.e. *f(n) = g(n) + h(n)*).
+The `createPath` function is essentially Dijkstra's algorithm; however, it calls the `getHeuristic` function in its override of the priority queue comparator. Thus, when ordering computed paths by their costs, the priority queue accounts for the heuristic (i.e. *f(n) = g(n) + h(n)*). It is this detail that transforms the algorithm into the A* search algorithm.
 
 ## Part 3: Trying Algorithm on Small Problem
-Tried out my heuristic functions with the appropriate cost function on 500x500 maps with random seeds 1, 2, 3, 4, and 5.  
+I tried out my heuristic functions with the appropriate cost function on 500x500 maps with random seeds 1, 2, 3, 4, and 5.  
 Use the following command to do this: `java Main YourAIModule -seed x` with x being one of the seeds listed above.
 
-For each execution I recorded the cost of the shortest path and the number of tiles visited as per the output of the program.
+For each execution I recorded the cost of the shortest path and the number of tiles visited as per the output of the program. To demonstrate the improvements made, here is a comparison between Dijkstra's and A* for the exponential cost function:  
+Dijkstra's (Exp)
+|        |      PathCost      | Uncovered | TimeTaken |
+|:------:|:------------------:|:---------:|:---------:|
+| Seed 1 | 533.4482191461119  |  226914   |   12407   |
+| Seed 2 | 549.5036346739352  |  237620   |   12420   |
+| Seed 3 | 510.97825243663607 |  228697   |   11165   |
+| Seed 4 | 560.6570436319696  |  216438   |   11344   |
+| Seed 5 | 479.5879215923168  |  220673   |   10594   |
+AStarExp
+|        |      PathCost      | Uncovered | TimeTaken |
+|:------:|:------------------:|:---------:|:---------:|
+| Seed 1 | 533.4482191461119  |   72625   |   2849    |
+| Seed 2 | 549.5036346739352  |   82171   |   3797    |
+| Seed 3 | 510.97825243663607 |   75432   |   3323    |
+| Seed 4 | 560.6570436319696  |   68869   |   2386    |
+| Seed 5 | 479.5879215923168  |   69895   |   2523    |
 
 ## Part 4: "Climbing" Mount Saint Helens
 A much larger grid necessitates a more cleverly implemented algorithm. I modified both my A* algorithm and admissible heuristic as as to find the optimal path in this new environment in the least possible time. I needed only to consider the chess movement (eight neighbors) and "New height divided by old height" cost function.  
