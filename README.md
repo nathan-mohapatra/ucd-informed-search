@@ -15,6 +15,25 @@ The assignment is to create an implementation of the `AIModule` interface that c
 ## Part 0: Dijkstra's Algorithm
 Dijkstra's algorithm is an algorithm for finding the shortest paths between nodes in a graph (which may represent, for example, road networks). It uses a data structure for storing and querying partial solutions sorted by distance from the startpoint; in my implementation I used a priority queue, ordered by the cost of the path, and a hash map containing visited tiles and their attributes.
 
+Pseudocode for potential implementation of Dijkstra's algorithm:  
+```
+function DIJKSTRAS(problem) returns a solution or failure
+    node = a node with STATE = problem. INITIAL-STATE, PATH-COST = 0
+    frontier = a priority queue ordered by PATH-COST, with node as the only element
+    explored = an empty set
+    loop do
+        if EMPTY(frontier) then return failure
+        node = POP(frontier) // chooses lowest-cost node in frontier
+        if problem.GOAL-TEST(node.STATE) then return SOLUTION(node)
+        add node.STATE to explored
+        for each action in problem.ACTIONS(node.STATE) do
+            child = CHILD-NODE(problem, node, action)
+            if child.STATE is not in explored or frontier then
+                frontier = INSERT(child, frontier)
+            else if child.STATE is in frontier with higher PATH-COST then
+                replace that frontier node with child
+```
+
 ## Part 1: Creating Heuristics
 Cost functions:  
 - Exponential of the height difference
