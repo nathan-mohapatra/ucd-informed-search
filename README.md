@@ -63,7 +63,7 @@ Use the following command to do this: `java Main YourAIModule -seed x` with x be
 
 For each execution I recorded the cost of the shortest path and the number of tiles visited as per the output of the program. To demonstrate the improvements made, here is a comparison between Dijkstra's and A* for the exponential cost function:
 
-Dijkstra's (Exp)
+`Dijkstra's (Exp)`
 |        |      PathCost      | Uncovered | TimeTaken |
 |:------:|:------------------:|:---------:|:---------:|
 | Seed 1 | 533.4482191461119  |  226914   |   12407   |
@@ -72,7 +72,7 @@ Dijkstra's (Exp)
 | Seed 4 | 560.6570436319696  |  216438   |   11344   |
 | Seed 5 | 479.5879215923168  |  220673   |   10594   |
 
-AStarExp
+`AStarExp`
 |        |      PathCost      | Uncovered | TimeTaken |
 |:------:|:------------------:|:---------:|:---------:|
 | Seed 1 | 533.4482191461119  |   72625   |   2849    |
