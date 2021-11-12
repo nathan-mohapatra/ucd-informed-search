@@ -53,7 +53,7 @@ A heuristic function *h(n)* estimates the cost of the cheapest path from the sta
 For each cost function above, I created an admissible heuristic, documented its exact form, and proved/showed that it is, indeed, admissible (see the report for these details). These admissible heuristics will be referred to as `AStarDiv` and `AStarExp`, respectively.
 
 ## Part 2: Implementing Heuristics and A* Search Algorithm
-My implementation of the A* search algorithm and admissible heuristics is in the files `AStarDiv_914862981.java` and `AStarExp_914862981.java`. While their implementation of Dijkstra's algorithm does not differ, the `getHeuristic` function is an implementation of the admissible heuristic that I devised for that specific cost function.
+My implementation of admissible heuristics and the A* search algorithm is in the files `AStarDiv_914862981.java` and `AStarExp_914862981.java`. While their implementation of Dijkstra's algorithm does not differ, the `getHeuristic` function is an implementation of the admissible heuristic that I devised for that specific cost function.
 
 The `createPath` function is essentially Dijkstra's algorithm; however, it calls the `getHeuristic` function in its override of the priority queue comparator. Thus, when ordering computed paths by their costs, the priority queue accounts for the heuristic (i.e. *f(n) = g(n) + h(n)*). It is this detail that transforms the algorithm into the A* search algorithm.
 
